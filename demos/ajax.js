@@ -5,7 +5,7 @@ function example () {
     container = document.getElementById('demo');
 
   // Get initial data
-  $.get('data/initial.json', function (initialData) {
+  $.ajax({url: 'data/initial.json', dataType: 'json', success: function (initialData) {
 
     var
       currentData = initialData,
@@ -58,6 +58,8 @@ function example () {
       }
     };
 
+    console.log(options);
+
     options.selectionCallback = (function () {
 
       var data = {
@@ -98,5 +100,6 @@ function example () {
     })();
 
     finance = new envision.templates.Finance(options);
+  }
   });
 }
